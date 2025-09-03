@@ -222,14 +222,14 @@ VanillaTilt.init(document.querySelectorAll(".services-content"), {
   "max-glare": 0.2,
 });
 
-function scrollSkills(direction) {
-  const container = document.getElementById('skillsScroll');
-  const scrollAmount = 300;
-  container.scrollBy({
-    left: direction * scrollAmount,
-    behavior: 'smooth'
-  });
-}
+// function scrollSkills(direction) {
+//   const container = document.getElementById('skillsScroll');
+//   const scrollAmount = 300;
+//   container.scrollBy({
+//     left: direction * scrollAmount,
+//     behavior: 'smooth'
+//   });
+// }
 
 window.addEventListener('scroll', function () {
   const scrollY = window.scrollY;

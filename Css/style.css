@@ -1408,7 +1408,7 @@ img {
   background: rgba(255, 255, 255, 0.85);
 }
 
-.skills-arrow {
+/* .skills-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1434,7 +1434,7 @@ img {
 
 .skills-arrow.right {
   right: 1.5rem;
-}
+} */
 
 
 
