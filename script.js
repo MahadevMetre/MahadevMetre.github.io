@@ -48,25 +48,41 @@ tabs.forEach((tab) => {
 // services box
 const boxViews = document.querySelectorAll(".services-box"),
   boxBtns = document.querySelectorAll(".services-button"),
-  boxCloses = document.querySelectorAll(".services-box-close");
-
-let box = function (boxClick) {
-  boxViews[boxClick].classList.add("active-box");
-};
+  boxCloses = document.querySelectorAll(".services-box-close"),
+  servicesContainer = document.querySelector(".services-container");
 
 boxBtns.forEach((boxBtn, i) => {
-  boxBtn.addEventListener("click", () => {
-    box(i);
+  boxBtn.addEventListener("click", (e) => {
+    e.preventDefault(); // Prevent default link behavior
+    const content = boxBtn.closest(".services-content");
+    const isActive = content.classList.contains("active") && boxViews[i].classList.contains("active-box");
+
+    // Remove active classes from all cards and boxes
+    boxViews.forEach((boxView) => boxView.classList.remove("active-box"));
+    document.querySelectorAll(".services-content").forEach((content) => content.classList.remove("active"));
+
+    // If the clicked card is not active, activate it; otherwise, keep it closed
+    if (!isActive) {
+      boxViews[i].classList.add("active-box");
+      content.classList.add("active");
+    }
   });
 });
 
 boxCloses.forEach((boxClose) => {
   boxClose.addEventListener("click", () => {
-    boxViews.forEach((boxView) => {
-      boxView.classList.remove("active-box");
-    });
+    boxViews.forEach((boxView) => boxView.classList.remove("active-box"));
+    document.querySelectorAll(".services-content").forEach((content) => content.classList.remove("active"));
   });
 });
+
+// Close any open cards when the user stops hovering over the services container
+if (servicesContainer) {
+  servicesContainer.addEventListener("mouseleave", () => {
+    boxViews.forEach((boxView) => boxView.classList.remove("active-box"));
+    document.querySelectorAll(".services-content").forEach((content) => content.classList.remove("active"));
+  });
+}
 
 //scroll section active link
 const sections = document.querySelectorAll("section[id]");
@@ -179,7 +195,6 @@ let swiperTestimonial = new Swiper(".testimonial-container", {
   },
 });
 
-
 // 🌌 3D Card Tilt
 VanillaTilt.init(document.querySelectorAll(".portfolio-content, .services-content, .skills-name"), {
   max: 15,
@@ -199,21 +214,6 @@ VANTA.HALO({
   backgroundColor: 0x121212
 });
 
-document.querySelectorAll('.services-content').forEach((card) => {
-  card.addEventListener('click', function () {
-    const alreadyActive = this.classList.contains('active');
-
-    // Remove active from all cards
-    document.querySelectorAll('.services-content').forEach(c => c.classList.remove('active'));
-
-    // Re-activate only if it wasn't already open
-    if (!alreadyActive) {
-      this.classList.add('active');
-    }
-  });
-});
-
-
 // 🔁 Add 3D tilt effect to service cards
 VanillaTilt.init(document.querySelectorAll(".services-content"), {
   max: 10,
@@ -222,12 +222,21 @@ VanillaTilt.init(document.querySelectorAll(".services-content"), {
   "max-glare": 0.2,
 });
 
-function scrollSkills(direction) {
-  const container = document.getElementById('skillsScroll');
-  const scrollAmount = 300;
-  container.scrollBy({
-    left: direction * scrollAmount,
-    behavior: 'smooth'
-  });
-}
+// function scrollSkills(direction) {
+//   const container = document.getElementById('skillsScroll');
+//   const scrollAmount = 300;
+//   container.scrollBy({
+//     left: direction * scrollAmount,
+//     behavior: 'smooth'
+//   });
+// }
 
+window.addEventListener('scroll', function () {
+  const scrollY = window.scrollY;
+  document.querySelector('.layer-back').style.transform =
+    `translateY(${scrollY * 0.2}px) scale(1.5)`;
+  document.querySelector('.layer-mid').style.transform =
+    `translateY(${scrollY * 0.4}px) scale(1.3)`;
+  document.querySelector('.layer-front').style.transform =
+    `translateY(${scrollY * 0.6}px) scale(1.1)`;
+});
