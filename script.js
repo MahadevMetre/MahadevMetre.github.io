@@ -240,3 +240,49 @@ window.addEventListener('scroll', function () {
   document.querySelector('.layer-front').style.transform =
     `translateY(${scrollY * 0.6}px) scale(1.1)`;
 });
+
+
+
+
+
+
+// contact form
+document
+  .getElementById("contact-form")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("https://portfolio.mahadev.gt.tc/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert("🎉 Thank you for contacting! We’ll get back to you soon 😊");
+        form.reset();
+      } else {
+        alert("❌ Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("⚠️ An error occurred. Please try again later.");
+    }
+  });
+
+// optional helper if you need direct call
+function handleFormSubmit(e) {
+  e.preventDefault(); // Stop navigation
+  alert("🎉 Thank you for contacting! We’ll get back to you soon 😊");
+  e.target.reset();
+  return false;
+}
