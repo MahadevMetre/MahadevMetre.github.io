@@ -251,6 +251,7 @@ document
   .getElementById("contact-form")
   .addEventListener("submit", async function (event) {
     event.preventDefault();
+    console.log("Form submitted!"); // Debugging
     const form = event.target;
     const formData = new FormData(form);
 
@@ -279,10 +280,3 @@ document
     }
   });
 
-// optional helper if you need direct call
-function handleFormSubmit(e) {
-  e.preventDefault(); // Stop navigation
-  alert("🎉 Thank you for contacting! We’ll get back to you soon 😊");
-  e.target.reset();
-  return false;
-}
