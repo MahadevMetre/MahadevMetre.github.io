@@ -261,7 +261,7 @@ document
     };
 
     try {
-      const response = await fetch("https://portfolio.mahadev.gt.tc/submit", {
+      const response = await fetch("https://portfolio-go-backend-production.up.railway.app/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
