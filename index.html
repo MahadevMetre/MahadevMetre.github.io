@@ -1501,24 +1501,29 @@
 
 
 
-                    <!-- contact form -->
-<form id="contact-form">
-  <div class="contact-form-field">
-    <label for="name" class="contact-form-label">Name</label>
-    <input type="text" id="name" name="name" class="contact-form-input" placeholder="Your Name" required>
-  </div>
-  <div class="contact-form-field">
-    <label for="email" class="contact-form-label">Email</label>
-    <input type="email" id="email" name="email" class="contact-form-input" placeholder="Your Email" required>
-  </div>
-  <div class="contact-form-field">
-    <label for="message" class="contact-form-label">Message</label>
-    <textarea id="message" name="message" class="contact-form-input" placeholder="Your Message" rows="5" required></textarea>
-  </div>
-  <button type="submit" class="button button-flex contact-form-button">
-    Send Message <i class="fa-solid fa-paper-plane button-icon"></i>
-  </button>
-</form>
+<!-- contact form -->
+<div class="contact-form">
+  <form id="contact-form">
+    <div class="contact-form-field">
+      <label for="from_name" class="contact-form-label">Name</label>
+      <input type="text" id="from_name" name="from_name" class="contact-form-input" placeholder="Your Name" required>
+    </div>
+
+    <div class="contact-form-field">
+      <label for="from_email" class="contact-form-label">Email</label>
+      <input type="email" id="from_email" name="from_email" class="contact-form-input" placeholder="Your Email" required>
+    </div>
+
+    <div class="contact-form-field">
+      <label for="message" class="contact-form-label">Message</label>
+      <textarea id="message" name="message" class="contact-form-input" placeholder="Your Message" rows="5" required></textarea>
+    </div>
+
+    <button type="submit" class="button button-flex contact-form-button">
+      Send Message <i class="fa-solid fa-paper-plane button-icon"></i>
+    </button>
+  </form>
+</div>
 
 
 
@@ -1590,6 +1595,15 @@
       src="https://kit.fontawesome.com/9b634c15bd.js"
       crossorigin="anonymous"
     ></script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("aCuVJz6mQmRrX0eW9wVkK"); // 🔑 replace with your actual EmailJS public key
+  })();
+</script>
+
     <script src="script.js"></script>
 
 <!-- 🌌 3D Tilt Effect -->
