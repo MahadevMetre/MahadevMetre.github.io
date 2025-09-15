@@ -246,37 +246,28 @@ window.addEventListener('scroll', function () {
 
 
 
-// contact form
+// contact form with EmailJS
 document
   .getElementById("contact-form")
-  .addEventListener("submit", async function (event) {
-    event.preventDefault();
-    console.log("Form submitted!"); // Debugging
-    const form = event.target;
-    const formData = new FormData(form);
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message"),
-    };
-
-    try {
-      const response = await fetch("https://portfolio-go-backend-production.up.railway.app/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        alert("🎉 Thank you for contacting! We’ll get back to you soon 😊");
-        form.reset();
-      } else {
-        alert("❌ Failed to send message. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("⚠️ An error occurred. Please try again later.");
-    }
+    emailjs
+      .sendForm(
+        "service_wtm2azr", // your EmailJS Service ID
+        "template_5o2j6cv", // your EmailJS Template ID
+        this // form element
+      )
+      .then(
+        function (response) {
+          alert("🎉 Message sent successfully ✅");
+          console.log("SUCCESS!", response.status, response.text);
+          e.target.reset();
+        },
+        function (error) {
+          alert("❌ Failed to send message, please try again.");
+          console.error("FAILED...", error);
+        }
+      );
   });
 
