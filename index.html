@@ -1503,10 +1503,7 @@
 
 <!-- contact form -->
 <div class="contact-form">
-  <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-    <!-- Web3Forms Access Key -->
-    <input type="hidden" name="access_key" value="cd22837b-c58d-407d-8568-0abe27ed750b">
-
+  <form id="contact-form">
     <div class="contact-form-field">
       <label for="from_name" class="contact-form-label">Name</label>
       <input type="text" id="from_name" name="from_name" class="contact-form-input" placeholder="Your Name" required>
@@ -1522,9 +1519,12 @@
       <textarea id="message" name="message" class="contact-form-input" placeholder="Your Message" rows="5" required></textarea>
     </div>
 
-    <button type="submit" class="button button-flex contact-form-button">
+    <button type="submit" id="contact-form-button" class="button button-flex contact-form-button">
       Send Message <i class="fa-solid fa-paper-plane button-icon"></i>
     </button>
+
+    <!-- Feedback messages -->
+    <div id="form-response" style="margin-top: 10px; display: none;"></div>
   </form>
 </div>
 
