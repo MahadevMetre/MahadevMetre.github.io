@@ -247,7 +247,6 @@ window.addEventListener('scroll', function () {
 
 
 // Contact form with Web3Forms
-<script>
 document.getElementById("contact-form").addEventListener("submit", async function (e) {
     e.preventDefault();
 
@@ -287,6 +286,5 @@ document.getElementById("contact-form").addEventListener("submit", async functio
         button.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane button-icon"></i>';
     }
 });
-</script>
 
 
