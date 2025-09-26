@@ -1503,7 +1503,10 @@
 
 <!-- contact form -->
 <div class="contact-form">
-  <form id="contact-form">
+  <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+    <!-- Web3Forms Access Key -->
+    <input type="hidden" name="access_key" value="cd22837b-c58d-407d-8568-0abe27ed750b">
+
     <div class="contact-form-field">
       <label for="from_name" class="contact-form-label">Name</label>
       <input type="text" id="from_name" name="from_name" class="contact-form-input" placeholder="Your Name" required>
