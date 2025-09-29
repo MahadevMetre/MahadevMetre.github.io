@@ -242,50 +242,6 @@ window.addEventListener('scroll', function () {
 });
 
 
-function showModal(modalId) {
-  const modal = document.getElementById(modalId);
-  modal.style.display = "block";
-
-  // Close on X button
-  modal.querySelector('.close-btn').onclick = function() {
-    modal.style.display = "none";
-  };
-
-  // Close on click outside
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
-}
-
-async function submitForm() {
-  const form = document.getElementById("contact-form");
-  const formData = new FormData(form);
-
-  const data = {
-    name: formData.get("name"),
-    email: formData.get("email"),
-    message: formData.get("message"),
-  };
-
-  try {
-    const response = await fetch("https://unchinked-unpoulticed-rebbecca.ngrok-free.app/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-      showModal("successModal");
-      form.reset();
-    } else {
-      showModal("errorModal");
-    }
-  } catch (error) {
-    showModal("errorModal");
-  }
-}
 
 
 
