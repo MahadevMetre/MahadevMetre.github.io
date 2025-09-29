@@ -247,45 +247,27 @@ window.addEventListener('scroll', function () {
 
 
 // contact form with EmailJS
-document.getElementById("contact-form").addEventListener("submit", async function (e) {
+document
+  .getElementById("contact-form")
+  .addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const form = e.target;
-    const button = document.getElementById("contact-form-button");
-    const responseDiv = document.getElementById("form-response");
-
-    // Show loading state
-    button.disabled = true;
-    button.innerText = "Sending...";
-
-    const formData = new FormData(form);
-    formData.append("access_key", "cd22837b-c58d-407d-8568-0abe27ed750b"); // ← Replace with your Web3Forms Access Key
-
-    try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: formData
-        });
-
-        const result = await response.json();
-
-        if (response.ok && result.success) {
-            responseDiv.style.display = "block";
-            responseDiv.style.color = "green";
-            responseDiv.innerText = "✅ Thank you! Your message has been sent.";
-            form.reset(); // Clear the form
-        } else {
-            throw new Error(result.message || "Failed to send message.");
+    emailjs
+      .sendForm(
+        "service_wtm2azr", // your EmailJS Service ID
+        "template_5o2j6cv", // your EmailJS Template ID
+        this // form element
+      )
+      .then(
+        function (response) {
+          alert("🎉 Message sent successfully ✅");
+          console.log("SUCCESS!", response.status, response.text);
+          e.target.reset();
+        },
+        function (error) {
+          alert("❌ Failed to send message, please try again.");
+          console.error("FAILED...", error);
         }
-    } catch (error) {
-        responseDiv.style.display = "block";
-        responseDiv.style.color = "red";
-        responseDiv.innerText = "❌ " + error.message;
-    } finally {
-        button.disabled = false;
-        button.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane button-icon"></i>';
-    }
-});
-
-
+      );
+  });
 
