@@ -246,8 +246,7 @@ window.addEventListener('scroll', function () {
 
 
 
-// Contact form with Web3Forms
-<script>
+// contact form with EmailJS
 document.getElementById("contact-form").addEventListener("submit", async function (e) {
     e.preventDefault();
 
@@ -260,7 +259,7 @@ document.getElementById("contact-form").addEventListener("submit", async functio
     button.innerText = "Sending...";
 
     const formData = new FormData(form);
-    formData.append("access_key", "cd22837b-c58d-407d-8568-0abe27ed750b"); // Replace with your Web3Forms Access Key
+    formData.append("access_key", "cd22837b-c58d-407d-8568-0abe27ed750b"); // ← Replace with your Web3Forms Access Key
 
     try {
         const response = await fetch("https://api.web3forms.com/submit", {
@@ -287,6 +286,6 @@ document.getElementById("contact-form").addEventListener("submit", async functio
         button.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane button-icon"></i>';
     }
 });
-</script>
+
 
 
