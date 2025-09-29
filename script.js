@@ -251,23 +251,3 @@ document
   .getElementById("contact-form")
   .addEventListener("submit", function (e) {
     e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_wtm2azr", // your EmailJS Service ID
-        "template_5o2j6cv", // your EmailJS Template ID
-        this // form element
-      )
-      .then(
-        function (response) {
-          alert("🎉 Message sent successfully ✅");
-          console.log("SUCCESS!", response.status, response.text);
-          e.target.reset();
-        },
-        function (error) {
-          alert("❌ Failed to send message, please try again.");
-          console.error("FAILED...", error);
-        }
-      );
-  });
-
