@@ -326,7 +326,7 @@ function showModal(modalId) {
     modal.style.display = "none";
   };
 
-  // Close on click outside
+  // Close on click outside 
   window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
