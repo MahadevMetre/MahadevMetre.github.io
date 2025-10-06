@@ -259,33 +259,33 @@ function showModal(modalId) {
   };
 }
 
-async function submitForm() {
-  const form = document.getElementById("contact-form");
-  const formData = new FormData(form);
+// async function submitForm() {
+//   const form = document.getElementById("contact-form");
+//   const formData = new FormData(form);
 
-  const data = {
-    name: formData.get("name"),
-    email: formData.get("email"),
-    message: formData.get("message"),
-  };
+//   const data = {
+//     name: formData.get("name"),
+//     email: formData.get("email"),
+//     message: formData.get("message"),
+//   };
 
-  try {
-    const response = await fetch("https://portfolio-go-backend-production.up.railway.app/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+//   try {
+//     const response = await fetch("https://portfolio-go-backend-production.up.railway.app/submit", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify(data),
+//     });
 
-    if (response.ok) {
-      showModal("successModal");
-      form.reset();
-    } else {
-      showModal("errorModal");
-    }
-  } catch (error) {
-    showModal("errorModal");
-  }
-}
+//     if (response.ok) {
+//       showModal("successModal");
+//       form.reset();
+//     } else {
+//       showModal("errorModal");
+//     }
+//   } catch (error) {
+//     showModal("errorModal");
+//   }
+// }
 
 
 
