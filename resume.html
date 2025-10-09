@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Resume — Mahadev Metre</title>
+    <link rel="stylesheet" href="Css/style.css">
+    <style>
+      /* Minimal printable resume styles */
+      body { background: #f8fafc; color: #0b1226; font-family: Poppins, sans-serif; padding: 2rem; }
+      .resume { max-width: 800px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 6px 20px rgba(15,23,42,0.06); }
+      .row { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+      h1 { margin:0; font-size:1.6rem; }
+      h2 { margin: 1rem 0 0.5rem; font-size:1rem; color:#5b0888 }
+      p { margin:0.25rem 0 0.75rem; }
+      .muted { color: #475569; font-size:0.95rem }
+      .contact a { color: #0b1226 }
+      ul { margin:0.5rem 0 1rem 1.25rem }
+      .skills { display:flex; flex-wrap:wrap; gap:0.5rem }
+      .skill { background:#eef2ff; color:#5b0888; padding:0.35rem 0.6rem; border-radius:999px; font-weight:600; font-size:0.85rem }
+      .download { margin-top:1rem; display:inline-block; background:#5b0888; color:#fff; padding:0.6rem 0.9rem; border-radius:6px; text-decoration:none }
+      @media print { body { padding:0 } .resume { box-shadow:none; border-radius:0 } .download { display:none } }
+    </style>
+  </head>
+  <body>
+    <div class="resume">
+      <div class="row">
+        <div>
+          <h1>Mahadev Metre</h1>
+          <div class="muted">AWS DevOps Engineer • CI/CD • Infrastructure as Code • Platform Engineering</div>
+        </div>
+        <div style="text-align:right" class="contact">
+          <div class="muted">Pune, India</div>
+          <div><a href="mailto:mahadev.metre666@gmail.com">mahadev.metre666@gmail.com</a> • <a href="tel:+916361765499">+91 63617 65499</a></div>
+          <div><a href="https://www.linkedin.com/in/mahadevmetre/" target="_blank">linkedin.com/in/mahadevmetre</a></div>
+        </div>
+      </div>
+
+      <h2>Summary</h2>
+      <p>DevOps engineer with 2+ years of experience building secure, scalable CI/CD pipelines and cloud infrastructure on AWS. Experienced with Terraform, Ansible, Kubernetes, and monitoring tools. Delivered automation that reduced deployment time by up to 60% and improved release reliability.</p>
+
+      <h2>Core Skills</h2>
+      <div class="skills">
+        <span class="skill">AWS</span>
+        <span class="skill">Terraform</span>
+        <span class="skill">Kubernetes</span>
+        <span class="skill">Docker</span>
+        <span class="skill">Jenkins</span>
+        <span class="skill">GitHub Actions</span>
+        <span class="skill">Ansible</span>
+        <span class="skill">Prometheus</span>
+        <span class="skill">Grafana</span>
+        <span class="skill">Trivy</span>
+        <span class="skill">Helm</span>
+      </div>
+
+      <h2>Experience</h2>
+      <h3 style="margin:0">DevOps Engineer — Paydoh</h3>
+      <div class="muted">2024 – Present</div>
+      <ul>
+        <li>Built and maintained CI/CD pipelines using Jenkins and GitHub Actions for microservices deployed on Kubernetes.</li>
+        <li>Automated infrastructure provisioning using Terraform and Ansible, improving environment consistency and reducing manual setup time.</li>
+        <li>Implemented monitoring (Prometheus, Grafana) and alerting, reducing mean time to detect incidents.</li>
+      </ul>
+
+      <h3 style="margin:0">AWS DevOps Engineer — Aseuro</h3>
+      <div class="muted">2023 – 2024</div>
+      <ul>
+        <li>Designed CI/CD workflows with AWS CodePipeline & CodeBuild for containerized applications on ECS.</li>
+        <li>Introduced automated security scanning (Trivy) and code quality gates (SonarQube) into the pipeline.</li>
+      </ul>
+
+      <h2>Education</h2>
+      <div style="margin-bottom:0.5rem">
+        <strong>BE — Computer Science & Engineering</strong> • VKIT (2019 – 2023)
+      </div>
+
+      <a class="download" href="Assets/Mahadev Metre_DevOps Engineer.pdf" download>Download PDF Resume</a>
+    </div>
+  </body>
+</html>
