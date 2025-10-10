@@ -4,15 +4,35 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Resume — Mahadev Metre</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mahadev Metre",
+      "jobTitle": "AWS DevOps Engineer",
+      "email": "mailto:mahadev.metre666@gmail.com",
+      "telephone": "+91 63617 65499",
+      "url": "https://mahadevmetre.github.io/",
+      "sameAs": [
+        "https://www.linkedin.com/in/mahadevmetre/"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mumbai",
+        "addressCountry": "IN"
+      },
+      "description": "DevOps engineer with 2+ years of experience building secure, scalable CI/CD pipelines and cloud infrastructure on AWS. Experienced with Terraform, Ansible, Kubernetes, and monitoring tools."
+    }
+    </script>
   <link rel="stylesheet" href="Css/style.css" media="screen">
   <link rel="stylesheet" href="Css/resume-print.css" media="print">
     <style>
-      /* Minimal printable resume styles */
-      body { background: #f8fafc; color: #0b1226; font-family: Poppins, sans-serif; padding: 2rem; }
-  /* extra bottom padding so absolute-positioned controls don't overlap content */
-  .resume { max-width: 800px; margin: 0 auto; background: #fff; padding: 2rem 2rem 6.5rem; border-radius: 8px; box-shadow: 0 6px 20px rgba(15,23,42,0.06); position: relative; }
+      /* Minimal printable resume styles + responsive rules */
+      body { background: #f8fafc; color: #0b1226; font-family: Poppins, sans-serif; padding: 2rem; -webkit-font-smoothing:antialiased; }
+      /* extra bottom padding so absolute-positioned controls don't overlap content */
+      .resume { max-width: 800px; width: 100%; box-sizing: border-box; margin: 0 auto; background: #fff; padding: 2rem 2rem 6.5rem; border-radius: 8px; box-shadow: 0 6px 20px rgba(15,23,42,0.06); position: relative; }
       .row { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
-      h1 { margin:0; font-size:1.6rem; }
+      h1 { margin:0; font-size:1.6rem; line-height:1.1 }
       h2 { margin: 1rem 0 0.5rem; font-size:1rem; color:#5b0888 }
       p { margin:0.25rem 0 0.75rem; }
       .muted { color: #475569; font-size:0.95rem }
@@ -21,16 +41,38 @@
       .skills { display:flex; flex-wrap:wrap; gap:0.5rem }
       .skill { background:#eef2ff; color:#5b0888; padding:0.35rem 0.6rem; border-radius:999px; font-weight:600; font-size:0.85rem }
       /* Controls: download bottom-left, print bottom-right */
-  .controls-left { position: absolute; left: 1.5rem; bottom: 3.2rem; }
-  .controls-right { position: absolute; right: 1.5rem; bottom: 3.2rem; }
+      .controls-left { position: absolute; left: 1.5rem; bottom: 3.2rem; }
+      .controls-right { position: absolute; right: 1.5rem; bottom: 3.2rem; }
       /* Unified button sizing */
-  .control-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.72rem 1.05rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.98rem; box-shadow: 0 6px 18px rgba(11,18,38,0.04); }
-  /* Both buttons share the same visual style */
-  .control-btn { background: #5b0888; color: #fff; border: 0; }
-  .control-btn:hover { background: #43045a; color: #fff; transform: translateY(-1px); box-shadow: 0 10px 30px rgba(11,18,38,0.08); }
-      @media (max-width: 520px) {
-        .controls-left, .controls-right { position: static; margin-top: 1rem; display: flex; justify-content: center; gap: 0.6rem; }
-        .resume { padding-bottom: 4.5rem; }
+      .control-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.72rem 1.05rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.98rem; box-shadow: 0 6px 18px rgba(11,18,38,0.04); -webkit-tap-highlight-color: rgba(0,0,0,0); }
+      /* Both buttons share the same visual style */
+      .control-btn { background: #5b0888; color: #fff; border: 0; }
+      .control-btn:hover { background: #43045a; color: #fff; transform: translateY(-1px); box-shadow: 0 10px 30px rgba(11,18,38,0.08); }
+      .control-btn:active { transform: translateY(0); opacity: 0.96 }
+      .control-btn:focus-visible { outline: 3px solid rgba(91,8,136,0.15); outline-offset: 3px; }
+
+      /* Small screens: stack header and controls, increase tap targets */
+      @media (max-width: 768px) {
+        body { padding: 1rem; }
+        .resume { padding: 1.25rem 1rem 5rem; margin: 0.5rem; }
+        .row { flex-direction: column; align-items: flex-start; }
+        .contact { text-align: left; margin-top: 0.6rem; }
+        h1 { font-size: 1.4rem; }
+        h2 { font-size: 0.95rem; }
+        .muted { font-size: 0.9rem }
+        .skills { gap: 0.4rem }
+        .skill { padding: 0.28rem 0.5rem; font-size: 0.82rem }
+        .controls-left, .controls-right { position: static; bottom: auto; right: auto; left: auto; display: flex; justify-content: center; gap: 0.6rem; margin-top: 1rem; }
+        .control-btn { padding: 0.9rem 1rem; font-size: 1rem; min-width: 44px; }
+      }
+
+      /* Very small screens: full-width stacked controls for easier tapping */
+      @media (max-width: 420px) {
+        .resume { padding: 1rem; }
+        h1 { font-size: 1.2rem }
+        .skill { padding: 0.22rem 0.45rem; font-size: 0.78rem }
+        .controls-left, .controls-right { flex-direction: column; gap: 0.5rem; }
+        .control-btn { width: 100%; justify-content: center; }
       }
 
       /* Print rules: force single-page fit where possible */
