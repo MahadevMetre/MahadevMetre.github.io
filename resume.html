@@ -4,11 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Resume — Mahadev Metre</title>
-    <link rel="stylesheet" href="Css/style.css">
+  <link rel="stylesheet" href="Css/style.css" media="screen">
+  <link rel="stylesheet" href="Css/resume-print.css" media="print">
     <style>
       /* Minimal printable resume styles */
       body { background: #f8fafc; color: #0b1226; font-family: Poppins, sans-serif; padding: 2rem; }
-      .resume { max-width: 800px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 6px 20px rgba(15,23,42,0.06); }
+  /* extra bottom padding so absolute-positioned controls don't overlap content */
+  .resume { max-width: 800px; margin: 0 auto; background: #fff; padding: 2rem 2rem 6.5rem; border-radius: 8px; box-shadow: 0 6px 20px rgba(15,23,42,0.06); position: relative; }
       .row { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
       h1 { margin:0; font-size:1.6rem; }
       h2 { margin: 1rem 0 0.5rem; font-size:1rem; color:#5b0888 }
@@ -18,8 +20,38 @@
       ul { margin:0.5rem 0 1rem 1.25rem }
       .skills { display:flex; flex-wrap:wrap; gap:0.5rem }
       .skill { background:#eef2ff; color:#5b0888; padding:0.35rem 0.6rem; border-radius:999px; font-weight:600; font-size:0.85rem }
-      .download { margin-top:1rem; display:inline-block; background:#5b0888; color:#fff; padding:0.6rem 0.9rem; border-radius:6px; text-decoration:none }
-      @media print { body { padding:0 } .resume { box-shadow:none; border-radius:0 } .download { display:none } }
+      /* Controls: download bottom-left, print bottom-right */
+  .controls-left { position: absolute; left: 1.5rem; bottom: 3.2rem; }
+  .controls-right { position: absolute; right: 1.5rem; bottom: 3.2rem; }
+      /* Unified button sizing */
+  .control-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.72rem 1.05rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.98rem; box-shadow: 0 6px 18px rgba(11,18,38,0.04); }
+  /* Both buttons share the same visual style */
+  .control-btn { background: #5b0888; color: #fff; border: 0; }
+  .control-btn:hover { background: #43045a; color: #fff; transform: translateY(-1px); box-shadow: 0 10px 30px rgba(11,18,38,0.08); }
+      @media (max-width: 520px) {
+        .controls-left, .controls-right { position: static; margin-top: 1rem; display: flex; justify-content: center; gap: 0.6rem; }
+        .resume { padding-bottom: 4.5rem; }
+      }
+
+      /* Print rules: force single-page fit where possible */
+      @page { size: A4 portrait; margin: 12mm; }
+      @media print {
+        html, body { height: auto; margin: 0; padding: 0; }
+        /* Reduce spacing and font sizes for print to try to keep to one page */
+        .resume { box-shadow: none; border-radius: 0; padding: 12mm 12mm 18mm; max-height: none; }
+        h1 { font-size: 18px; }
+        h2 { font-size: 13px; }
+        h3 { font-size: 12px; }
+        p, .muted, li { font-size: 11px; }
+        ul { margin: 0.25rem 0 0.6rem 1rem; }
+        .skills { gap: 0.3rem; }
+        .skill { padding: 0.2rem 0.45rem; font-size: 0.85rem; }
+        /* Hide interactive controls in print */
+        .controls-left, .controls-right { display: none !important; }
+        /* Avoid breaking lists and headings across pages */
+        h2, h3, p, ul, .skills, .contact { page-break-inside: avoid; }
+        /* If content overflows, user can adjust printer margins; no auto-scaling to avoid print dialog issues */
+      }
     </style>
   </head>
   <body>
@@ -75,7 +107,19 @@
         <strong>BE — Computer Science & Engineering</strong> • VKIT (2019 – 2023)
       </div>
 
-      <a class="download" href="Assets/Mahadev Metre_DevOps Engineer.pdf" download target="_blank" rel="noopener noreferrer">Download PDF Resume</a>
+      <div class="controls-left">
+        <a class="download control-btn" href="Assets/Mahadev Metre_DevOps Engineer.pdf" download target="_blank" rel="noopener noreferrer" aria-label="Download PDF Resume">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3v10" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 11l4 4 4-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21H3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download PDF Resume
+        </a>
+      </div>
+      <!-- <div class="controls-right">
+        <button type="button" class="print-btn control-btn" onclick="window.print()" aria-label="Print Resume">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 9V3h12v6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 14h12v7H6z" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 14V9h12v5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Print Resume
+        </button>
+      </div>
     </div>
+    Print executes in-place using window.print(); no additional scripts required -->
   </body>
 </html>
